@@ -7,8 +7,8 @@ public class Vertice {
      private String nome;
      private String cor;
 
-    public Vertice(){
-        
+    public Vertice(String nome){
+        this.nome=nome;
     }
      
     public void setNome(String nome){

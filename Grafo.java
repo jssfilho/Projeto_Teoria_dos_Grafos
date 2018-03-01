@@ -6,14 +6,14 @@ import java.util.ArrayList;
  */
 public class Grafo {
    private String nome;
-   private ArrayList<Vertice> N = new ArrayList<Vertice>();
-   private ArrayList<Aresta> A = new ArrayList<Aresta>();
+   public ArrayList<Vertice> N = new ArrayList<Vertice>();
+   public ArrayList<Aresta> A = new ArrayList<Aresta>();
    
    
    public Grafo(String nome){
        this.nome = nome;
    }
-   
+   /*Verifica se vertice1-vertice2 existe*/
    public boolean existeAresta(String vertice1, String vertice2){
        for(Aresta a: A){
            if(a.getVertices_ligado()[0].getNome().equals(vertice1) && a.getVertices_ligado()[0].getNome().equals(vertice2))
@@ -21,9 +21,9 @@ public class Grafo {
        }
        return false;
    }
-   
+   /*verifica se o nome do vertice está de acordo, se sim, adiciona, se não, retorna false*/
    public boolean adicionarVertice(String nome){
-       if (nome.contains(" ") || nome.contains(" ")){
+       if (nome.contains(" ") || nome.contains("-")){
            System.out.println("Vertice já existe!");
            return false;
        }
@@ -32,19 +32,19 @@ public class Grafo {
                System.out.println("Vertice já existe!");
                return false;
            }else{
-               Vertice vertice = new Vertice();
-               vertice.setNome(nome);
+               Vertice vertice = new Vertice(nome);
+               
                this.N.add(vertice);
            }
        }
        return true;
    }
-   
+    /*verifica se os vertices existem, se sim, adiciona, se não, retorna false*/
    public boolean adicionarAresta(String nome, String vertice1,String vertice2){
        int cont=0;
        Vertice v1 = null,v2 = null;
        
-       for(Vertice v: N){
+       for(Vertice v: this.N){
            if(v.getNome().equals(vertice1)){
                cont+=1;
                v1=v;
