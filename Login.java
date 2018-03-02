@@ -105,6 +105,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
            
             String id = this.usuario.getText();
@@ -121,7 +122,7 @@ public class Login extends javax.swing.JFrame {
             
             }
     }//GEN-LAST:event_okActionPerformed
-
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

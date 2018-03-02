@@ -25,5 +25,9 @@ public class Vertice {
     public void setCor(String cor) {
         this.cor = cor;
     }
+    
+    public String toString(){
+        return this.nome;
+    }
 
 }

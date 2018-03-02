@@ -4,43 +4,54 @@
  * and open the template in the editor.
  */
 package mapa_rpg;
-import java.util.ArrayList;
+
 import java.util.Random;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 /**
- *
  * @author JoÃo
  */
 public class GeradorMapa {
     public Grafo g;
-    public Map mapa;
+    public ArrayList <Vertice[]> mapa = new ArrayList();
     
-    public GeradorMapa(Grafo g){
-        this.g=g;
+    public GeradorMapa(){
         Random dado = new Random();
         int quant_niveis=2*dado.nextInt(10);
-        
         for(int i=0;i<quant_niveis/2;i++){
             int n_vertice_nivel=dado.nextInt(10);
-            if(i==1){
+            String nome = "";
+            if(i==0){
                 Vertice[] n1_vertices =new Vertice[1];
-                n1_vertices[0]=new Vertice("n1_v1");
-                this.mapa.put("n"+i, n1_vertices);
+                n1_vertices[0]=new Vertice("n0_v0");
+                nome = "n"+i;
+                mapa.add(n1_vertices);
             }else{
                 /*isso ta tronxo ainda*/
-                int nx_vertice_nivel = dado.nextInt(10);
-                Vertice[] nx_vertices =new Vertice[nx_vertice_nivel];
-                for(int j=0;j<nx_vertice_nivel;j++){
-                    this.mapa.put("n"+i, nx_vertices);
+                Vertice[] nx_vertices =new Vertice[n_vertice_nivel];
+                for(int j=0;j<n_vertice_nivel;j++){
+                    String nome_v = "n"+i+"-"+"v"+j;
+                    nx_vertices[j] = new Vertice(nome_v);
+                    mapa.add(nx_vertices);
                 }
+                nome = "n"+i;
             }
-  
         }
         
+        
     }
-    public Map getMapa(){
-        return this.mapa;
+    
+    
+    public String toString(){
+        int tam = this.mapa.size();
+        String n = "";
+        for(int i=0;i<tam;i++){
+            n += "___n"+i +" ";
+            for(Vertice v: this.mapa.get(i)){
+                /* imprimir um array de objetos...*/
+                n += " "+v.getNome()+" ";
+            }
+        }
+        return n;
     }
     
 }

@@ -6,7 +6,6 @@
 package mapa_rpg;
 
 /**
- *
  * @author JoÃo
  */
 public class Mapa_RPG {
@@ -17,13 +16,15 @@ public class Mapa_RPG {
     public static void main(String[] args) {
         
         //abri janela de login
+        /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
             }
         });
-        
-        
+        */
+        GeradorMapa gMapa = new GeradorMapa();
+        System.out.println(gMapa); 
     }
 }
     
