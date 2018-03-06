@@ -24,7 +24,8 @@ public class Mapa_RPG {
         });
         */
         GeradorMapa gMapa = new GeradorMapa();
-        System.out.println(gMapa); 
+        gMapa.gerarGrafo();
+        gMapa.imprime();
     }
 }
     

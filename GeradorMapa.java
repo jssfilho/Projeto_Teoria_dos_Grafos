@@ -11,47 +11,67 @@ import java.util.ArrayList;
  * @author JoÃo
  */
 public class GeradorMapa {
-    public Grafo g;
+    public Grafo g = new Grafo();
     public ArrayList <Vertice[]> mapa = new ArrayList();
     
     public GeradorMapa(){
+        //valor variavel
+        int x = 5;
         Random dado = new Random();
-        int quant_niveis=2*dado.nextInt(10);
+        int quant_niveis=2*(dado.nextInt(x)+1);
+        int n_vertice_nivel = 0;
+        String nome_v = "";
         for(int i=0;i<quant_niveis/2;i++){
-            int n_vertice_nivel=dado.nextInt(10);
-            String nome = "";
+            n_vertice_nivel=(dado.nextInt(x)+1);
             if(i==0){
                 Vertice[] n1_vertices =new Vertice[1];
-                n1_vertices[0]=new Vertice("n0_v0");
-                nome = "n"+i;
+                n1_vertices[0]=new Vertice("n0-v0");
                 mapa.add(n1_vertices);
             }else{
                 /*isso ta tronxo ainda*/
                 Vertice[] nx_vertices =new Vertice[n_vertice_nivel];
                 for(int j=0;j<n_vertice_nivel;j++){
-                    String nome_v = "n"+i+"-"+"v"+j;
+                    nome_v = "n"+i+"-"+"v"+j;
                     nx_vertices[j] = new Vertice(nome_v);
-                    mapa.add(nx_vertices);
                 }
-                nome = "n"+i;
+                mapa.add(nx_vertices);
+            }
+        }
+        nome_v = ""; 
+        int  n_nivel=this.mapa.size();
+        for(int a = this.mapa.size(); a>0;a--){
+            n_vertice_nivel = this.mapa.get(a-1).length;
+            Vertice[] nx_vertices = new Vertice[n_vertice_nivel];
+            for(int b = 0;b<n_vertice_nivel;b++){
+                nome_v = "n"+n_nivel+"_"+"v"+b;
+                nx_vertices[b] = new Vertice(nome_v);
+            }
+            mapa.add(nx_vertices);
+            n_nivel +=1;
+        }
+    }
+    
+    public Grafo gerarGrafo(){
+        for(int i=0;i<this.mapa.size();i++){
+            for(int j=0; j<this.mapa.get(i).length;j++){
+                this.g.addVertice(this.mapa.get(i)[j]);
             }
         }
         
-        
+        return this.g;
     }
     
-    
-    public String toString(){
+    //função de teste para imprimir
+    public void imprime(){
         int tam = this.mapa.size();
         String n = "";
         for(int i=0;i<tam;i++){
-            n += "___n"+i +" ";
+            n = "___n"+i +" ";
             for(Vertice v: this.mapa.get(i)){
-                /* imprimir um array de objetos...*/
                 n += " "+v.getNome()+" ";
             }
+        System.out.println(n);
         }
-        return n;
     }
     
 }

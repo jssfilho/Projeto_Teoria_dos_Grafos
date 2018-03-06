@@ -10,8 +10,8 @@ public class Grafo {
    public ArrayList<Aresta> A = new ArrayList<Aresta>();
    
    
-   public Grafo(String nome){
-       this.nome = nome;
+   public Grafo(){
+       ;
    }
    /*Verifica se vertice1-vertice2 existe*/
    public boolean existeAresta(String vertice1, String vertice2){
@@ -39,6 +39,16 @@ public class Grafo {
        }
        return true;
    }
+   public boolean addVertice(Vertice v){
+       if(this.N.contains(v)){
+           System.out.println("Vertice já existe");
+           return false;
+       }else{
+           this.N.add(v);
+       }
+       return true;
+   }
+   
     /*verifica se os vertices existem, se sim, adiciona, se não, retorna false*/
    public boolean adicionarAresta(String nome, String vertice1,String vertice2){
        int cont=0;
@@ -75,4 +85,5 @@ public class Grafo {
         return true;
    }
 
+   
 }
