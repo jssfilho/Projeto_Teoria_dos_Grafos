@@ -11,6 +11,7 @@ public class Aresta {
     private Vertice[] vertices_ligado;
     
     public Aresta(){
+        
     }
     public void setNome(String nome){
         this.nome=nome;

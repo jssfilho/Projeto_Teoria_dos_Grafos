@@ -51,6 +51,19 @@ public class GeradorMapa {
         }
     }
     
+    public void gerarCaminhos(){
+    /*
+     *Um caminho é um conjunto de arestas que ligam dois conjuntos de vertices(nivel)
+    */
+    int quant_nivel = this.mapa.size();
+       for(int i = 0; i<quant_nivel;i++){
+           for(int j = 0;j<this.mapa.get(i).length;j++){
+               
+           }
+       }
+    
+    }
+    
     public Grafo gerarGrafo(){
         for(int i=0;i<this.mapa.size();i++){
             for(int j=0; j<this.mapa.get(i).length;j++){
