@@ -12,14 +12,20 @@ import java.util.ArrayList;
  */
 public class GeradorMapa {
     public Grafo g = new Grafo();
+    
     public ArrayList <Vertice[]> mapa = new ArrayList();
+    
     public ArrayList <int[][]> caminhos = new ArrayList();
+    
+    public int maiorNumeroVertice;
     
     public GeradorMapa(){
         //valor variavel
         int x = 5;
         Random dado = new Random();
+        
         int quant_niveis=2*(dado.nextInt(x)+1);
+        
         int n_vertice_nivel = 0;
         String nome_v = "";
         for(int i=0;i<quant_niveis/2;i++){
@@ -50,6 +56,15 @@ public class GeradorMapa {
             mapa.add(nx_vertices);
             n_nivel +=1;
         }
+        //qual o maior nivel(em quantidades de vertice)
+        int maior=0;
+        for(int k=0;k<this.mapa.size();k++){
+            if(this.mapa.get(k).length>=maior){
+                maior=this.mapa.get(k).length;
+            }
+        }
+        this.maiorNumeroVertice=maior;
+        
     }
     
     public void gerarCaminhos(){
@@ -63,7 +78,6 @@ public class GeradorMapa {
         nivel=this.mapa.get(a).length;
         nivel_p=this.mapa.get(a+1).length;
         int [][] caminho_x = new int[nivel][nivel_p];
-        
         for(int i = 0;i<nivel;i++){
             for(int j = 0;j<nivel_p;j++){
                 /*condição para sortear se existe ou não aresta*/
@@ -91,7 +105,6 @@ public class GeradorMapa {
                 this.g.addVertice(this.mapa.get(i)[j]);
             }
         }
-        
         return this.g;
     }
     
