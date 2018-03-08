@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class GeradorMapa {
     public Grafo g = new Grafo();
     public ArrayList <Vertice[]> mapa = new ArrayList();
+    public ArrayList <int[][]> caminhos = new ArrayList();
     
     public GeradorMapa(){
         //valor variavel
@@ -55,12 +56,32 @@ public class GeradorMapa {
     /*
      *Um caminho é um conjunto de arestas que ligam dois conjuntos de vertices(nivel)
     */
-    int quant_nivel = this.mapa.size();
-       for(int i = 0; i<quant_nivel;i++){
-           for(int j = 0;j<this.mapa.get(i).length;j++){
-               
-           }
-       }
+    int quant_caminhos = this.mapa.size()-1;
+    int nivel, nivel_p, nivel_sorteado;
+    Random dado = new Random();
+    for(int a=0; a<quant_caminhos-1;a++){
+        nivel=this.mapa.get(a).length;
+        nivel_p=this.mapa.get(a+1).length;
+        int [][] caminho_x = new int[nivel][nivel_p];
+        
+        for(int i = 0;i<nivel;i++){
+            for(int j = 0;j<nivel_p;j++){
+                /*condição para sortear se existe ou não aresta*/
+                if (i==0){
+                    nivel_sorteado = dado.nextInt(nivel_p);
+                    caminho_x[i][nivel_sorteado]=1;
+                    this.mapa.get(a)[i].saida=true;
+                    this.mapa.get(a+1)[nivel_sorteado].entrada=true;
+                }else if(dado.nextInt(2)==1 && this.mapa.get(a)[i].saida==false && this.mapa.get(a+1)[j].entrada==false){
+                    caminho_x[i][j]=1;
+                    this.mapa.get(a)[i].saida=true;
+                    this.mapa.get(a+1)[j].entrada=true;
+                }else{
+                    caminho_x[i][j]=0;
+                }
+            }
+        }
+    }
     
     }
     

@@ -25,7 +25,7 @@ public class Mapa_RPG {
         */
         GeradorMapa gMapa = new GeradorMapa();
         gMapa.gerarGrafo();
-        gMapa.imprime();
+        gMapa.gerarCaminhos();
     }
 }
     

@@ -11,6 +11,8 @@ public class Vertice {
 
     public Vertice(String nome){
         this.nome=nome;
+        this.saida=false;
+        this.entrada=false;
     }
      
     public void setNome(String nome){
