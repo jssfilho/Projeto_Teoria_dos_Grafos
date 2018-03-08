@@ -1,5 +1,8 @@
 
 package mapa_rpg;
+
+import javafx.scene.shape.Circle;
+
 /**
  * @author JoÃo
  */
@@ -8,6 +11,7 @@ public class Vertice {
      private String cor;
      public boolean entrada;
      public boolean saida;
+     public Circle v;
 
     public Vertice(String nome){
         this.nome=nome;

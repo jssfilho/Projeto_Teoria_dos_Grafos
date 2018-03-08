@@ -72,8 +72,13 @@ public class MapaFX extends Application {
         
         
         
-       
-        
+        Line linhaTeste = new Line();
+        linhaTeste.setStartX(0);
+        linhaTeste.setStartY(0);
+        linhaTeste.setEndX(largura);
+        linhaTeste.setEndY(altura);
+        linhaTeste.setFill(Color.BLACK);
+        componentes.getChildren().add(linhaTeste);
         Scene cena = new Scene(componentes, largura, altura);
         cena.setFill(Color.LIGHTBLUE);
 

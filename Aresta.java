@@ -1,6 +1,8 @@
 
 package mapa_rpg;
 
+import javafx.scene.shape.Line;
+
 /**
  * @author JoÃo
  */
@@ -8,7 +10,8 @@ public class Aresta {
     
     private String nome;
     private float peso;
-    private Vertice[] vertices_ligado;
+    private Vertice[] vertices_ligado = new Vertice[2];
+    public Line a;
     
     public Aresta(){
         
