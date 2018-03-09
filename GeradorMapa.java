@@ -72,35 +72,30 @@ public class GeradorMapa {
      *Um caminho é um conjunto de arestas que ligam dois conjuntos de vertices(nivel)
     */
         int quant_caminhos = this.mapa.size()-1;
-        int nivel, nivel_p, nivel_sorteado;
+        int nivel, nivel_p, vertice_sorteado;
         Random dado = new Random();
-        for(int a=0; a<quant_caminhos-1;a++){
+        for(int a=0; a<quant_caminhos;a++){
             nivel=this.mapa.get(a).length;
             nivel_p=this.mapa.get(a+1).length;
             int [][] caminho_x = new int[nivel][nivel_p];
             for(int i = 0;i<nivel;i++){
                 for(int j = 0;j<nivel_p;j++){
                 /*condição para sortear se existe ou não aresta*/
-                    if (i==0){
-                        nivel_sorteado = dado.nextInt(nivel_p);
-                        caminho_x[i][nivel_sorteado]=1;
-                        this.mapa.get(a)[i].saida=true;
-                        this.mapa.get(a+1)[nivel_sorteado].entrada=true;
+                    if(nivel==1 || nivel_p==1){
+                        int i_sorte=dado.nextInt(nivel), j_sorte=dado.nextInt(nivel_p);
+                        caminho_x[i_sorte][j_sorte]=1;
+                        this.mapa.get(a)[i_sorte].saida=true;
+                        this.mapa.get(a+1)[j_sorte].entrada=true;
                     }else if(dado.nextInt(2)==1 && this.mapa.get(a)[i].saida==false && this.mapa.get(a+1)[j].entrada==false){
                         caminho_x[i][j]=1;
                         this.mapa.get(a)[i].saida=true;
                         this.mapa.get(a+1)[j].entrada=true;
-                    }else if(i==nivel-1){
-                        nivel_sorteado = dado.nextInt(nivel);
-                        caminho_x[i][nivel_sorteado]=1;
-                        this.mapa.get(a)[i].saida=true;
-                        this.mapa.get(a+1)[nivel_sorteado].entrada=true;
                     }else{
                         caminho_x[i][j]=0;
                     }
                 }
             }
-        this.caminhos.add(caminho_x);
+            this.caminhos.add(caminho_x);
         }
     }
     
