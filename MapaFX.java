@@ -8,14 +8,18 @@ package mapa_rpg;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Spinner;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 /**
  * @author JoÃo
@@ -24,16 +28,28 @@ public class MapaFX extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        //botão
         Button btn = new Button();
-      
         btn.setText("Gerar Mapa");
-        StackPane btnClicks = new StackPane();
-        btnClicks.getChildren().add(btn);
-        Scene cenaBtn = new Scene(btnClicks, 40, 40);
-
+        btn.setTranslateX(50);
+        btn.setTranslateY(25);
+        //seletor
+        Spinner seletor = new Spinner(1,4,1);
+        seletor.setTranslateX(25);
+        seletor.setTranslateY(70);
+        //texto do seletor
+        Text mTexto = new Text("N° minino:");
+        mTexto.setTranslateX(25);
+        mTexto.setTranslateY(65);
+        mTexto.setFill(Color.WHITE);
+        
+        Group componentes1 = new Group();
+        componentes1.getChildren().addAll(btn,seletor,mTexto);
+        Scene cenaBtn = new Scene(componentes1, 200, 100);
+        cenaBtn.setFill(Color.BLACK);
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                primaryStage.setScene(Grafo(btn));
+                primaryStage.setScene(Grafo(btn,seletor));
             }
         });
         
@@ -48,11 +64,12 @@ public class MapaFX extends Application {
         launch();
     }
     
-    public Scene Grafo(Button btn){
-        GeradorMapa mapaJogo = new GeradorMapa();
+    public Scene Grafo(Button btn, Spinner minimo){
+        int min = (int) minimo.getValue();
+        GeradorMapa mapaJogo = new GeradorMapa(min);
         mapaJogo.gerarCaminhos();
         Group componentes = new Group(); 
-        componentes.getChildren().add(btn);
+        componentes.getChildren().addAll(btn, minimo);
         int n = mapaJogo.mapa.size();
         int n_maior = mapaJogo.maiorNumeroVertice;
         int largura, altura, v;
@@ -60,7 +77,7 @@ public class MapaFX extends Application {
         
         altura = n_maior*20 + (n_maior-1)*60+lastX+lastY;
         
-        largura = n*20 + (n-1)*100 + lastX+lastY;
+        largura = 20+ (n-1)*100 + lastX+lastY;
         
      
         for(int cont= 0;cont<n;cont++){

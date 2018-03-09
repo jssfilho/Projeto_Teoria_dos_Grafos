@@ -19,17 +19,17 @@ public class GeradorMapa {
     
     public int maiorNumeroVertice;
     
-    public GeradorMapa(){
+    public GeradorMapa(int min){
         //valor variavel
-        int x = 5;
+        int x =6 - min;
         Random dado = new Random();
         
-        int quant_niveis=2*(dado.nextInt(x)+1);
+        int quant_niveis=2*(dado.nextInt(x)+min);
         
         int n_vertice_nivel = 0;
         String nome_v = "";
         for(int i=0;i<quant_niveis/2;i++){
-            n_vertice_nivel=(dado.nextInt(x)+1);
+            n_vertice_nivel=(dado.nextInt(x)+min);
             if(i==0){
                 Vertice[] n1_vertices =new Vertice[1];
                 n1_vertices[0]=new Vertice("n0-v0");

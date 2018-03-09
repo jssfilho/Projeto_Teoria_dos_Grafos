@@ -23,7 +23,7 @@ public class Mapa_RPG {
             }
         });
         */
-        GeradorMapa gMapa = new GeradorMapa();
+        GeradorMapa gMapa = new GeradorMapa(1);
         gMapa.gerarGrafo();
         
         gMapa.gerarCaminhos();
