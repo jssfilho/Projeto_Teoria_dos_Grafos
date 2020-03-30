@@ -4,118 +4,21 @@
  * and open the template in the editor.
  */
 package mapa_rpg;
-
-
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
 public class Teste extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
-        Circle circle = new Circle( 100,100,50);
-        circle.setStroke(Color.BLUE);
-        circle.setFill(Color.BLUE.deriveColor(1, 1, 1, 0.3));
-
-        Rectangle rectangle = new Rectangle( 0,0,100,100);
-        rectangle.relocate(200, 200);
-        rectangle.setStroke(Color.GREEN);
-        rectangle.setFill(Color.GREEN.deriveColor(1, 1, 1, 0.3));
-
-        Text text = new Text( "Example Text");
-        text.relocate(300, 300);
-
-        Pane root = new Pane();
-        root.getChildren().addAll(circle, rectangle, text);
-
-        MouseGestures mouseGestures = new MouseGestures();
-        mouseGestures.makeDraggable(circle);
-        mouseGestures.makeDraggable(rectangle);
-        mouseGestures.makeDraggable(text);
-
-        Scene scene = new Scene(root, 1024, 768);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-    }
-
-    public static class MouseGestures {
-
-        class DragContext {
-            double x;
-            double y;
-        }
-
-        DragContext dragContext = new DragContext();
-
-        public void makeDraggable( Node node) {
-
-            node.setOnMousePressed( onMousePressedEventHandler);
-            node.setOnMouseDragged( onMouseDraggedEventHandler);
-            node.setOnMouseReleased( onMouseReleasedEventHandler);
-
-        }
-
-        EventHandler<MouseEvent> onMousePressedEventHandler = event -> {
-
-            if( event.getSource() instanceof Circle) {
-
-                Circle circle = (Circle) (event.getSource());
-
-                dragContext.x = circle.getCenterX() - event.getSceneX();
-                dragContext.y = circle.getCenterY() - event.getSceneY();
-
-            } else {
-
-                Node node = (Node) (event.getSource());
-
-                dragContext.x = node.getTranslateX() - event.getSceneX();
-                dragContext.y = node.getTranslateY() - event.getSceneY();
-
-            }
-        };
-
-        EventHandler<MouseEvent> onMouseDraggedEventHandler = event -> {
-
-            if( event.getSource() instanceof Circle) {
-
-                Circle circle = (Circle) (event.getSource());
-
-                circle.setCenterX( dragContext.x + event.getSceneX());
-                circle.setCenterY( dragContext.y + event.getSceneY());
-
-            } else {
-
-                Node node = (Node) (event.getSource());
-
-                node.setTranslateX( dragContext.x + event.getSceneX());
-                node.setTranslateY( dragContext.y + event.getSceneY());
-
-            }
-
-        };
-
-        EventHandler<MouseEvent> onMouseReleasedEventHandler = event -> {
-        };
-
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-
-/*
  private final String IMG_URL = "http://www.oracle.com/ocom/groups/public/@otn/documents/digitalasset/402460.gif";
 
  public static void main(String[] args) {
@@ -165,7 +68,7 @@ public class Teste extends Application {
   palco.show();
  }
 }
-
+/*
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

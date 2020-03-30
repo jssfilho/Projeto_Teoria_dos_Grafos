@@ -1,4 +1,4 @@
-# Projeto_Teoria_dos_Grafos
+## Projeto_Teoria_dos_Grafos
 Projeto apresentado a disciplina de teoria dos grafos para obtenção de nota.
 
 atributos: poder, habilidade, armadura e resistencia.
@@ -10,4 +10,9 @@ Cada usuario personaliza seu proprio personagem de acordo com as regras, semelha
 
 
 Embora o jogo não esteja finalizado(longe disso). O principal desafio foi completado, geração automatica do mapa. O existem 3 arquivos "main", mas o que deve ser executado é o MapaFX.java, os demais são para testes dos algoritmos utilizados.
-https://www.androidpro.com.br/blog/desenvolvimento-android/android-views-intro/
+
+#### Contém uma pasta destinada as atividades realizadas na disciplina.
+
+
+
+
